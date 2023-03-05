@@ -13,13 +13,13 @@ typealias headerCompletionHandler = ([RecipeHeader]) -> Void
 
 class RecipeService {
     
-    var recipes : [RecipeHeader] = []
     
     private let session = URLSession.shared
         
     func getMealHeaders(completion: @escaping headerCompletionHandler) {
         
-        
+        var recipes : [RecipeHeader] = []
+
         
         let url = URL(string:"https://themealdb.com/api/json/v1/1/filter.php?c=Dessert")!
         
@@ -46,7 +46,7 @@ class RecipeService {
                             let item = RecipeHeader(strMeal: strMeal, strMealThumb: strMealThumb, idMeal: mealId)
                             
                         
-                            self.recipes.append(item)
+                            recipes.append(item)
                         }
                         
                 
@@ -56,8 +56,9 @@ class RecipeService {
                 }
             }
             
-            let recipes = self?.recipes ?? []
-            completion(recipes)
+            let sortedList = recipes.sorted { $0.strMeal ?? "" < $1.strMeal ?? "" }
+            
+            completion(sortedList)
 
         })
         task.resume()

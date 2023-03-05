@@ -21,6 +21,8 @@
 		CE6CBE7929B3604F0041657F /* RecipeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE7829B3604F0041657F /* RecipeDetail.swift */; };
 		CE6CBE7B29B363DC0041657F /* RecipeHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE7A29B363DC0041657F /* RecipeHeaderViewModel.swift */; };
 		CE6CBE7E29B369650041657F /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE7D29B369650041657F /* RecipeService.swift */; };
+		CE6CBE8129B49B1D0041657F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CE6CBE8029B49B1D0041657F /* Kingfisher */; };
+		CE6CBE8329B5483E0041657F /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE8229B5483E0041657F /* MainTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,7 @@
 		CE6CBE7829B3604F0041657F /* RecipeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetail.swift; sourceTree = "<group>"; };
 		CE6CBE7A29B363DC0041657F /* RecipeHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeHeaderViewModel.swift; sourceTree = "<group>"; };
 		CE6CBE7D29B369650041657F /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
+		CE6CBE8229B5483E0041657F /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6CBE8129B49B1D0041657F /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +174,7 @@
 		CE5132E829A82B550063DFFE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE6CBE8229B5483E0041657F /* MainTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,6 +203,9 @@
 			dependencies = (
 			);
 			name = recipes;
+			packageProductDependencies = (
+				CE6CBE8029B49B1D0041657F /* Kingfisher */,
+			);
 			productName = recipes;
 			productReference = CE5132B029A825FE0063DFFE /* recipes.app */;
 			productType = "com.apple.product-type.application";
@@ -270,6 +278,9 @@
 				Base,
 			);
 			mainGroup = CE5132A729A825FE0063DFFE;
+			packageReferences = (
+				CE6CBE7F29B49B1D0041657F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = CE5132B129A825FE0063DFFE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -316,6 +327,7 @@
 				CE6CBE7929B3604F0041657F /* RecipeDetail.swift in Sources */,
 				CE5132B829A825FE0063DFFE /* MainViewController.swift in Sources */,
 				CE5132B429A825FE0063DFFE /* AppDelegate.swift in Sources */,
+				CE6CBE8329B5483E0041657F /* MainTableViewCell.swift in Sources */,
 				CE6CBE7E29B369650041657F /* RecipeService.swift in Sources */,
 				CE6CBE7B29B363DC0041657F /* RecipeHeaderViewModel.swift in Sources */,
 				CE6CBE7529B35EF90041657F /* Recipe.swift in Sources */,
@@ -654,6 +666,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE6CBE7F29B49B1D0041657F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE6CBE8029B49B1D0041657F /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE6CBE7F29B49B1D0041657F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE5132A829A825FE0063DFFE /* Project object */;
 }
