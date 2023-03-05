@@ -21,10 +21,9 @@ public class RecipeHeaderViewModel {
         return header.strMeal ?? ""
     }
     
-    public var mealImage: UIImage? {
-                
-        let url = URL(string: header.strMealThumb ?? "")
-        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-        return UIImage(data: data!)
+    public var mealImageUrl: String {
+        
+        return header.strMealThumb ?? ""
+        
     }
 }
