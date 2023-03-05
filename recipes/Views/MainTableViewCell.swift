@@ -33,9 +33,6 @@ class MainTableViewCell: UITableViewCell {
         image.anchor(top: self.topAnchor, bottom: self.bottomAnchor, leading: self.leadingAnchor, trailing: nil, size: .init(width: 100, height: 100))
         label.anchor(top: nil, bottom: nil, leading: image.trailingAnchor, trailing: nil, padding: .init(top: 0, left: 15, bottom: 0, right: 0))
         label.centerY(center: self.centerYAnchor)
-        
-        
-        
     }
     
     required init?(coder: NSCoder) {
