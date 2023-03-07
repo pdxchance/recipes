@@ -7,36 +7,35 @@
 
 import Foundation
 
-struct RecipeDetail {
-    let idMeal: Int?
+struct RecipeDetails : Codable {
+    let meals: [RecipeDetail]?
+}
+
+struct RecipeDetail : Codable {
+    let idMeal: String?
     let strMeal: String?
-    let strDrinkAlternate: String?
-    let strCategory: String?
-    let strArea: String?
     let strInstructions: String?
     let strMealThumb: String?
-    let strTags: String?
-    let strYouTube: String?
-    let strIngredent1: String?
-    let strIngredent2: String?
-    let strIngredent3: String?
-    let strIngredent4: String?
-    let strIngredent5: String?
-    let strIngredent6: String?
-    let strIngredent7: String?
-    let strIngredent8: String?
-    let strIngredent9: String?
-    let strIngredent10: String?
-    let strIngredent11: String?
-    let strIngredent12: String?
-    let strIngredent13: String?
-    let strIngredent14: String?
-    let strIngredent15: String?
-    let strIngredent16: String?
-    let strIngredent17: String?
-    let strIngredent18: String?
-    let strIngredent19: String?
-    let strIngredent20: String?
+    let strIngredient1: String?
+    let strIngredient2: String?
+    let strIngredient3: String?
+    let strIngredient4: String?
+    let strIngredient5: String?
+    let strIngredient6: String?
+    let strIngredient7: String?
+    let strIngredient8: String?
+    let strIngredient9: String?
+    let strIngredient10: String?
+    let strIngredient11: String?
+    let strIngredient12: String?
+    let strIngredient13: String?
+    let strIngredient14: String?
+    let strIngredient15: String?
+    let strIngredient16: String?
+    let strIngredient17: String?
+    let strIngredient18: String?
+    let strIngredient19: String?
+    let strIngredient20: String?
     let strMeasure1: String?
     let strMeasure2: String?
     let strMeasure3: String?
@@ -57,8 +56,4 @@ struct RecipeDetail {
     let strMeasure18: String?
     let strMeasure19: String?
     let strMeasure20: String?
-    let strSource: String?
-    let strImageSource: String?
-    let strCreativeCommonsConfirmed: String?
-    let dateModified: String?
 }

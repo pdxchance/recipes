@@ -26,4 +26,9 @@ public class RecipeHeaderViewModel {
         return header.strMealThumb ?? ""
         
     }
+    
+    public var mealId: String {
+        
+        return header.idMeal ?? ""
+    }
 }
