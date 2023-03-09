@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct RecipeDetails : Codable {
-    let meals: [RecipeDetail]?
+struct ReceipieDetails : Codable {
+    var meals: [RecipeDetail]?
 }
 
 struct RecipeDetail : Codable {

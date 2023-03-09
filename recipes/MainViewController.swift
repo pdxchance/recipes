@@ -47,6 +47,8 @@ class MainViewController: UIViewController {
     fileprivate func loadData() {
         service.getMealHeaders(category: "Dessert") { headers in
             
+            guard let headers = headers else { return }
+            
             for header in headers {
                 let viewModel = RecipeHeaderViewModel(header: header)
                 self.viewModels.append(viewModel)
