@@ -51,7 +51,7 @@ class RecipeService {
             do {
                 guard let data = data else { return }
                 
-                let json = try? JSONDecoder().decode(ReceipieDetails.self, from: data)
+                let json = try? JSONDecoder().decode(RecipeDetails.self, from: data)
                 
                 if let payload = json?.meals?[0] {
                     completion(payload)
