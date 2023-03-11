@@ -26,24 +26,21 @@ class RecipeService {
             
             let json = try? JSONDecoder().decode(Recipe.self, from: data)
             
-            if let payload = json {
-                if let headers = payload.meals {
-                    
-                    let sortedList = headers.sorted {
-                        
-                        guard let a = $0.strMeal, let b = $1.strMeal else { return false }
-                        
-                        return a < b
-                        
-                    }
+            if let payload = json?.meals {
                 
-                    for header in sortedList {
-                        let vm = RecipeHeaderViewModel(header: header)
-                        viewModels.append(vm)
-                    }
+                let sortedList = payload.sorted {
                     
-                    completion(viewModels)
+                    guard let a = $0.strMeal, let b = $1.strMeal else { return false }
+                    
+                    return a < b
                 }
+                
+                for header in sortedList {
+                    let vm = RecipeHeaderViewModel(header: header)
+                    viewModels.append(vm)
+                }
+                
+                completion(viewModels)
             }
             completion(nil)
         })
