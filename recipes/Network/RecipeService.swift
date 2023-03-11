@@ -39,7 +39,6 @@ class RecipeService {
                     let vm = RecipeHeaderViewModel(header: header)
                     viewModels.append(vm)
                 }
-                
                 completion(viewModels)
             }
             completion(nil)
