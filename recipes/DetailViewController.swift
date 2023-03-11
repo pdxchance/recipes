@@ -14,7 +14,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     var collectionView: UICollectionView!
     
-    var data = RecipeDetail()
+    var data = RecipeDetailViewModel(detail: RecipeDetail())
     
     let service = RecipeService()
     var idMeal = ""
@@ -58,10 +58,9 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseId, for: indexPath) as! DetailCollectionViewCell
         
-        let vm = RecipeDetailViewModel(detail: data)
-        cell.mealName.text = vm.mealName
-        cell.mealImage.kf.setImage(with: URL(string: vm.mealImageUrl))
-        cell.instructions.text = vm.instructions
+        cell.mealName.text = data.mealName
+        cell.mealImage.kf.setImage(with: URL(string: data.mealImageUrl))
+        cell.instructions.text = data.instructions
         
         return cell
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 typealias headerCompletionHandler = ([RecipeHeaderViewModel]?) -> Void
-typealias detailCompletionHandler = (RecipeDetail?) -> Void
+typealias detailCompletionHandler = (RecipeDetailViewModel?) -> Void
 
 class RecipeService {
     
@@ -54,12 +54,13 @@ class RecipeService {
         let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
             
             do {
-                guard let data = data else { return }
+                guard let data = data else { return completion(nil) }
                 
                 let json = try? JSONDecoder().decode(RecipeDetails.self, from: data)
                 
                 if let payload = json?.meals?[0] {
-                    completion(payload)
+                    let vm = RecipeDetailViewModel(detail: payload)
+                    completion(vm)
                 }
             }
             completion(nil)
