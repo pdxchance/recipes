@@ -7,14 +7,14 @@
 
 import Foundation
 
-typealias headerCompletionHandler = ([RecipeHeaderViewModel]?) -> Void
-typealias detailCompletionHandler = (RecipeDetailViewModel?) -> Void
+typealias HeaderCompletionHandler = ([RecipeHeaderViewModel]?) -> Void
+typealias DetailCompletionHandler = (RecipeDetailViewModel?) -> Void
 
 class RecipeService {
     
     private let session = URLSession.shared
     
-    func getMealHeaders(category: String, completion: @escaping headerCompletionHandler) {
+    func getMealHeaders(category: String, completion: @escaping HeaderCompletionHandler) {
         
         var viewModels : [RecipeHeaderViewModel] = []
         
@@ -46,7 +46,7 @@ class RecipeService {
         task.resume()
     }
     
-    func getMealDetail(mealId: String, completion: @escaping detailCompletionHandler) {
+    func getMealDetail(mealId: String, completion: @escaping DetailCompletionHandler) {
         
         let url = URL(string:"https://themealdb.com/api/json/v1/1/lookup.php?i=" + mealId)!
         
