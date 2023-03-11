@@ -45,22 +45,14 @@ class MainViewController: UIViewController {
     }
     
     fileprivate func loadData() {
-        service.getMealHeaders(category: "Dessert") { headers in
+        service.getMealHeaders(category: "Dessert") { viewModels in
             
-            guard let headers = headers else { return }
-            
-            for header in headers {
-                let viewModel = RecipeHeaderViewModel(header: header)
-                self.viewModels.append(viewModel)
-            }
+            guard let viewModels = viewModels else { return }
             
             DispatchQueue.main.async {
+                self.viewModels = viewModels
                 self.tableView.reloadData()
             }
-        }
-        
-        service.getMealDetail(mealId: "53049") { detail in
-            
         }
     }
 }
@@ -98,6 +90,5 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         controller.idMeal = self.viewModels[indexPath.row].mealId
         navigationController?.pushViewController(controller, animated: true)
     }
-    
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias headerCompletionHandler = ([RecipeHeader]?) -> Void
+typealias headerCompletionHandler = ([RecipeHeaderViewModel]?) -> Void
 typealias detailCompletionHandler = (RecipeDetail?) -> Void
 
 class RecipeService {
@@ -15,6 +15,8 @@ class RecipeService {
     private let session = URLSession.shared
     
     func getMealHeaders(category: String, completion: @escaping headerCompletionHandler) {
+        
+        var viewModels : [RecipeHeaderViewModel] = []
         
         let url = URL(string:"https://themealdb.com/api/json/v1/1/filter.php?c=" + category)!
         
@@ -34,7 +36,13 @@ class RecipeService {
                         return a < b
                         
                     }
-                    completion(sortedList)
+                
+                    for header in sortedList {
+                        let vm = RecipeHeaderViewModel(header: header)
+                        viewModels.append(vm)
+                    }
+                    
+                    completion(viewModels)
                 }
             }
             completion(nil)
