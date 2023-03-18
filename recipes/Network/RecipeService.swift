@@ -7,65 +7,64 @@
 
 import Foundation
 
-
-typealias headerCompletionHandler = ([RecipeHeader]) -> Void
-
+typealias HeaderCompletionHandler = ([RecipeHeaderViewModel]?) -> Void
+typealias DetailCompletionHandler = (RecipeDetailViewModel?) -> Void
 
 class RecipeService {
     
-    var recipes : [RecipeHeader] = []
-    
     private let session = URLSession.shared
+    
+    func getMealHeaders(category: String, completion: @escaping HeaderCompletionHandler) {
         
-    func getMealHeaders(completion: @escaping headerCompletionHandler) {
+        var viewModels : [RecipeHeaderViewModel] = []
         
+        let url = URL(string:"https://themealdb.com/api/json/v1/1/filter.php?c=" + category)!
         
-        
-        let url = URL(string:"https://themealdb.com/api/json/v1/1/filter.php?c=Dessert")!
-        
-        let task = session.dataTask(with: url, completionHandler: { [weak self]  (data, response, error) in
+        let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
             
-            do {
-                guard let self = self, let data = data else { return }
-                                
-                do {
-                    // make sure this JSON is in the format we expect
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                        
-                        
-                        let meals = json["meals"] as! [[String:Any]]
-                        
-                        for meal in meals {
-                            
-                            let strMeal = meal["strMeal"] as! String
-                            
-                            let strMealThumb = meal["strMealThumb"] as! String
-                            
-                            let mealId = meal["idMeal"] as! String
-                            
-                            let item = RecipeHeader(strMeal: strMeal, strMealThumb: strMealThumb, idMeal: mealId)
-                            
-                        
-                            self.recipes.append(item)
-                        }
-                        
+            guard let data = data else { return completion(nil) }
+            
+            let json = try? JSONDecoder().decode(Recipe.self, from: data)
+            
+            if let payload = json?.meals {
                 
-                    }
-                } catch let error as NSError {
-                    print("Failed to load: \(error.localizedDescription)")
+                let sortedList = payload.sorted {
+                    
+                    guard let a = $0.strMeal, let b = $1.strMeal else { return false }
+                    
+                    return a < b
                 }
+                
+                for header in sortedList {
+                    let vm = RecipeHeaderViewModel(header: header)
+                    viewModels.append(vm)
+                }
+                completion(viewModels)
             }
-            
-            let recipes = self?.recipes ?? []
-            completion(recipes)
-
+            completion(nil)
         })
         task.resume()
     }
     
-    
-    
-    
-    
-    
+    func getMealDetail(mealId: String, completion: @escaping DetailCompletionHandler) {
+        
+        let url = URL(string:"https://themealdb.com/api/json/v1/1/lookup.php?i=" + mealId)!
+        
+        let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
+            
+            do {
+                guard let data = data else { return completion(nil) }
+                
+                let json = try? JSONDecoder().decode(RecipeDetails.self, from: data)
+                
+                if let payload = json?.meals?[0] {
+                    let vm = RecipeDetailViewModel(detail: payload)
+                    completion(vm)
+                }
+            }
+            completion(nil)
+            
+        })
+        task.resume()
+    }
 }

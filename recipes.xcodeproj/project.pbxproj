@@ -16,11 +16,15 @@
 		CE5132D529A826040063DFFE /* recipesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5132D429A826040063DFFE /* recipesUITests.swift */; };
 		CE5132D729A826040063DFFE /* recipesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5132D629A826040063DFFE /* recipesUITestsLaunchTests.swift */; };
 		CE5132E529A82B000063DFFE /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5132E429A82B000063DFFE /* View.swift */; };
-		CE6CBE7529B35EF90041657F /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE7429B35EF90041657F /* Recipe.swift */; };
 		CE6CBE7729B35F9B0041657F /* ReceipeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE7629B35F9B0041657F /* ReceipeHeader.swift */; };
 		CE6CBE7929B3604F0041657F /* RecipeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE7829B3604F0041657F /* RecipeDetail.swift */; };
 		CE6CBE7B29B363DC0041657F /* RecipeHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE7A29B363DC0041657F /* RecipeHeaderViewModel.swift */; };
 		CE6CBE7E29B369650041657F /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE7D29B369650041657F /* RecipeService.swift */; };
+		CE6CBE8129B49B1D0041657F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CE6CBE8029B49B1D0041657F /* Kingfisher */; };
+		CE6CBE8329B5483E0041657F /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE8229B5483E0041657F /* MainTableViewCell.swift */; };
+		CE6CBE8729B611C10041657F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE8629B611C10041657F /* DetailViewController.swift */; };
+		CE6CBE8929B618380041657F /* ReceipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE8829B618380041657F /* ReceipeDetailViewModel.swift */; };
+		CE6CBE8B29B7AE290041657F /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE8A29B7AE290041657F /* DetailCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,11 +58,14 @@
 		CE5132D429A826040063DFFE /* recipesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipesUITests.swift; sourceTree = "<group>"; };
 		CE5132D629A826040063DFFE /* recipesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CE5132E429A82B000063DFFE /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		CE6CBE7429B35EF90041657F /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		CE6CBE7629B35F9B0041657F /* ReceipeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceipeHeader.swift; sourceTree = "<group>"; };
 		CE6CBE7829B3604F0041657F /* RecipeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetail.swift; sourceTree = "<group>"; };
 		CE6CBE7A29B363DC0041657F /* RecipeHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeHeaderViewModel.swift; sourceTree = "<group>"; };
 		CE6CBE7D29B369650041657F /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
+		CE6CBE8229B5483E0041657F /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		CE6CBE8629B611C10041657F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CE6CBE8829B618380041657F /* ReceipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceipeDetailViewModel.swift; sourceTree = "<group>"; };
+		CE6CBE8A29B7AE290041657F /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6CBE8129B49B1D0041657F /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +128,7 @@
 				CE5132BC29A826040063DFFE /* Assets.xcassets */,
 				CE5132BE29A826040063DFFE /* LaunchScreen.storyboard */,
 				CE5132C129A826040063DFFE /* Info.plist */,
+				CE6CBE8629B611C10041657F /* DetailViewController.swift */,
 			);
 			path = recipes;
 			sourceTree = "<group>";
@@ -152,7 +161,6 @@
 		CE5132E629A82B320063DFFE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CE6CBE7429B35EF90041657F /* Recipe.swift */,
 				CE6CBE7629B35F9B0041657F /* ReceipeHeader.swift */,
 				CE6CBE7829B3604F0041657F /* RecipeDetail.swift */,
 			);
@@ -163,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				CE6CBE7A29B363DC0041657F /* RecipeHeaderViewModel.swift */,
+				CE6CBE8829B618380041657F /* ReceipeDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -170,6 +179,8 @@
 		CE5132E829A82B550063DFFE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE6CBE8229B5483E0041657F /* MainTableViewCell.swift */,
+				CE6CBE8A29B7AE290041657F /* DetailCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,6 +209,9 @@
 			dependencies = (
 			);
 			name = recipes;
+			packageProductDependencies = (
+				CE6CBE8029B49B1D0041657F /* Kingfisher */,
+			);
 			productName = recipes;
 			productReference = CE5132B029A825FE0063DFFE /* recipes.app */;
 			productType = "com.apple.product-type.application";
@@ -270,6 +284,9 @@
 				Base,
 			);
 			mainGroup = CE5132A729A825FE0063DFFE;
+			packageReferences = (
+				CE6CBE7F29B49B1D0041657F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = CE5132B129A825FE0063DFFE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -312,13 +329,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6CBE8729B611C10041657F /* DetailViewController.swift in Sources */,
+				CE6CBE8B29B7AE290041657F /* DetailCollectionViewCell.swift in Sources */,
 				CE5132E529A82B000063DFFE /* View.swift in Sources */,
 				CE6CBE7929B3604F0041657F /* RecipeDetail.swift in Sources */,
+				CE6CBE8929B618380041657F /* ReceipeDetailViewModel.swift in Sources */,
 				CE5132B829A825FE0063DFFE /* MainViewController.swift in Sources */,
 				CE5132B429A825FE0063DFFE /* AppDelegate.swift in Sources */,
+				CE6CBE8329B5483E0041657F /* MainTableViewCell.swift in Sources */,
 				CE6CBE7E29B369650041657F /* RecipeService.swift in Sources */,
 				CE6CBE7B29B363DC0041657F /* RecipeHeaderViewModel.swift in Sources */,
-				CE6CBE7529B35EF90041657F /* Recipe.swift in Sources */,
 				CE6CBE7729B35F9B0041657F /* ReceipeHeader.swift in Sources */,
 				CE5132B629A825FE0063DFFE /* SceneDelegate.swift in Sources */,
 			);
@@ -654,6 +674,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE6CBE7F29B49B1D0041657F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE6CBE8029B49B1D0041657F /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE6CBE7F29B49B1D0041657F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE5132A829A825FE0063DFFE /* Project object */;
 }
