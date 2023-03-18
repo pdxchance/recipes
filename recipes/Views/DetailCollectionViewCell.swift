@@ -31,6 +31,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 26)
         label.text = "SomeThing"
         label.textAlignment = .center
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
