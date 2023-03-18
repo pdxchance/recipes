@@ -9,9 +9,28 @@ import UIKit
 
 class DetailCollectionViewCell: UICollectionViewCell {
     
+    let vStackView : UIStackView = {
+       let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
+    
+    let hStackView : UIStackView = {
+       let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
+    
+    
     let mealName : UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 26)
+        label.text = "SomeThing"
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -38,17 +57,20 @@ class DetailCollectionViewCell: UICollectionViewCell {
 
         super.init(frame:frame)
         
+        addSubview(hStackView)
+        hStackView.addArrangedSubview(mealName)
         
-        addSubview(mealName)
-        addSubview(mealImage)
-        addSubview(instructions)
+        addSubview(vStackView)
+        vStackView.addArrangedSubview(mealImage)
+        vStackView.addArrangedSubview(instructions)
+        
+        hStackView.anchor(top: self.topAnchor, bottom: nil, leading: self.leadingAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 15, right: 0))
+
+        vStackView.anchor(top: hStackView.bottomAnchor, bottom: self.bottomAnchor, leading: self.leadingAnchor , trailing: self.trailingAnchor, padding: .init(top: 15, left: 0, bottom: 0, right: 0))
         
         mealName.centerX(center: self.centerXAnchor)
         
-        mealImage.anchor(top: mealName.bottomAnchor, bottom: nil, leading: self.leadingAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 250))
-        
-        
-        instructions.anchor(top: mealImage.bottomAnchor, bottom: nil, leading: self.leadingAnchor, trailing: self.trailingAnchor, padding: .init(top: 15, left: 10, bottom: 0, right: 10))
+        mealImage.anchor(top: vStackView.topAnchor, bottom: nil, leading: vStackView.leadingAnchor, trailing: vStackView.trailingAnchor, size: .init(width: 300, height: 200))
     }
 
     required init?(coder aDecoder: NSCoder) {

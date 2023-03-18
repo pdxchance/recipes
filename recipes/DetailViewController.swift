@@ -10,11 +10,15 @@ import Kingfisher
 
 class DetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    private var collectionViewHeightConstraint: NSLayoutConstraint!
+    
     let cellReuseId = "cellReuseId"
     
     var collectionView: UICollectionView!
     
-    var data = RecipeDetailViewModel(detail: RecipeDetail())
+    var collectionViewLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    
+    var vm = RecipeDetailViewModel(detail: RecipeDetail())
     
     let service = RecipeService()
     var idMeal = ""
@@ -33,34 +37,48 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             DispatchQueue.main.async {
                 if let detail = detail {
-                    self.data = detail
+                    self.vm = detail
                 }
                 self.collectionView.reloadData()
             }
         }
     }
     
+    override func viewWillLayoutSubviews() {
+           super.viewWillLayoutSubviews()
+           collectionViewHeightConstraint.constant = collectionViewLayout.collectionViewContentSize.height
+       }
+    
     fileprivate func setupCollectionView() {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: view.bounds.size.width, height: view.bounds.size.height)
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.itemSize = UICollectionViewFlowLayout.automaticSize
         layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+
+        view.addSubview(collectionView)
         
-        self.view = collectionView
+        collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
+        
+        collectionViewHeightConstraint = collectionView.heightAnchor.constraint(equalToConstant: 50)
+        collectionViewHeightConstraint.isActive = true
         
         self.collectionView.register(DetailCollectionViewCell.self, forCellWithReuseIdentifier: cellReuseId)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        
+
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseId, for: indexPath) as! DetailCollectionViewCell
         
-        cell.mealName.text = data.mealName
-        cell.mealImage.kf.setImage(with: URL(string: data.mealImageUrl))
-        cell.instructions.text = data.instructions
+        cell.mealName.text = vm.mealName
+        cell.mealImage.kf.setImage(with: URL(string: vm.mealImageUrl))
+        cell.instructions.text = vm.instructions
         
         return cell
     }
@@ -68,4 +86,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
+    
+
 }
