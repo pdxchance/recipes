@@ -31,6 +31,9 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         setupCollectionView()
         
+        let button = UIBarButtonItem(title: "Ingredents", style: .plain, target: self, action:#selector(openIngredents))
+        self.navigationItem.rightBarButtonItem = button
+        
         service.getMealDetail(mealId: idMeal) { [weak self] detail in
             
             guard let self = self else { return }
@@ -38,8 +41,8 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
             DispatchQueue.main.async {
                 if let detail = detail {
                     self.vm = detail
+                    self.collectionView.reloadData()
                 }
-                self.collectionView.reloadData()
             }
         }
     }
@@ -48,6 +51,15 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
            super.viewWillLayoutSubviews()
            collectionViewHeightConstraint.constant = collectionViewLayout.collectionViewContentSize.height
        }
+    
+    @objc func openIngredents() {
+     
+        let vm = IngredentsViewModel(meal: self.vm.detail)
+        let controller = IngredientsViewController()
+        controller.vm  = vm
+        navigationController?.pushViewController(controller, animated: true)
+
+    }
     
     fileprivate func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
