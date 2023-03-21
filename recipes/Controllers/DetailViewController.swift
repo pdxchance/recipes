@@ -23,17 +23,37 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     let service = RecipeService()
     var idMeal = ""
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        setupMainView()
         
         setupCollectionView()
         
+        getData()
+    }
+    
+    override func viewWillLayoutSubviews() {
+           super.viewWillLayoutSubviews()
+           collectionViewHeightConstraint.constant = collectionViewLayout.collectionViewContentSize.height
+       }
+    
+    @objc func openIngredents() {
+        let vm = IngredentsViewModel(meal: self.vm.detail)
+        let controller = IngredientsViewController()
+        controller.vm  = vm
+        navigationController?.pushViewController(controller, animated: true)
+
+    }
+    
+    fileprivate func setupMainView() {
+        view.backgroundColor = .white
+        
         let button = UIBarButtonItem(title: "Ingredents", style: .plain, target: self, action:#selector(openIngredents))
         self.navigationItem.rightBarButtonItem = button
-        
+    }
+    
+    fileprivate func getData() {
         service.getMealDetail(mealId: idMeal) { [weak self] detail in
             
             guard let self = self else { return }
@@ -45,20 +65,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
                 }
             }
         }
-    }
-    
-    override func viewWillLayoutSubviews() {
-           super.viewWillLayoutSubviews()
-           collectionViewHeightConstraint.constant = collectionViewLayout.collectionViewContentSize.height
-       }
-    
-    @objc func openIngredents() {
-     
-        let vm = IngredentsViewModel(meal: self.vm.detail)
-        let controller = IngredientsViewController()
-        controller.vm  = vm
-        navigationController?.pushViewController(controller, animated: true)
-
     }
     
     fileprivate func setupCollectionView() {
@@ -79,9 +85,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.collectionView.register(DetailCollectionViewCell.self, forCellWithReuseIdentifier: cellReuseId)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        
-
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -98,6 +101,4 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
-    
-
 }

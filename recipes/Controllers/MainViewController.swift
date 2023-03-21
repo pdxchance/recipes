@@ -27,12 +27,18 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        setupMainView()
         
         setupTableView()
         
         loadData()
         
+    }
+    
+    fileprivate func setupMainView() {
+        view.backgroundColor = .white
+        
+        title = "Recipes"
     }
     
     fileprivate func setupTableView() {
