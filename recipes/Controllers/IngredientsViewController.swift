@@ -21,24 +21,36 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
         
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupMainView()
+        
+        setupTableView()
+        
+        getData()
+    }
+    
+    fileprivate func setupMainView() {
         view.backgroundColor = .white
         
         view.addSubview(tableView)
-        
+    }
+    
+    fileprivate func getData() {
+        if let ingredients = vm?.ingredients {
+            self.data = ingredients
+            tableView.reloadData()
+        }
+    }
+    
+    fileprivate func setupTableView() {
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseId)
         tableView.delegate = self
         tableView.dataSource = self
-        
-        if let ingredients = vm?.ingredients {
-            self.data = ingredients
-            tableView.reloadData()
-        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,5 +65,4 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-
 }
