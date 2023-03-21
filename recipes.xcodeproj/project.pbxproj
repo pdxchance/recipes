@@ -25,6 +25,8 @@
 		CE6CBE8729B611C10041657F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE8629B611C10041657F /* DetailViewController.swift */; };
 		CE6CBE8929B618380041657F /* ReceipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE8829B618380041657F /* ReceipeDetailViewModel.swift */; };
 		CE6CBE8B29B7AE290041657F /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE8A29B7AE290041657F /* DetailCollectionViewCell.swift */; };
+		CE6CBE8E29C5B33C0041657F /* IngredentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE8D29C5B33C0041657F /* IngredentsViewModel.swift */; };
+		CE6CBE9029C9763E0041657F /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CBE8F29C9763E0041657F /* IngredientsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		CE6CBE8629B611C10041657F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CE6CBE8829B618380041657F /* ReceipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceipeDetailViewModel.swift; sourceTree = "<group>"; };
 		CE6CBE8A29B7AE290041657F /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE6CBE8D29C5B33C0041657F /* IngredentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredentsViewModel.swift; sourceTree = "<group>"; };
+		CE6CBE8F29C9763E0041657F /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 		CE5132B229A825FE0063DFFE /* recipes */ = {
 			isa = PBXGroup;
 			children = (
+				CE6CBE8C29C5B1B80041657F /* Controllers */,
 				CE6CBE7C29B368A30041657F /* Network */,
 				CE5132E829A82B550063DFFE /* Views */,
 				CE5132E729A82B410063DFFE /* ViewModels */,
@@ -124,11 +129,9 @@
 				CE5132E329A82A960063DFFE /* Extensions */,
 				CE5132B329A825FE0063DFFE /* AppDelegate.swift */,
 				CE5132B529A825FE0063DFFE /* SceneDelegate.swift */,
-				CE5132B729A825FE0063DFFE /* MainViewController.swift */,
 				CE5132BC29A826040063DFFE /* Assets.xcassets */,
 				CE5132BE29A826040063DFFE /* LaunchScreen.storyboard */,
 				CE5132C129A826040063DFFE /* Info.plist */,
-				CE6CBE8629B611C10041657F /* DetailViewController.swift */,
 			);
 			path = recipes;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			children = (
 				CE6CBE7A29B363DC0041657F /* RecipeHeaderViewModel.swift */,
 				CE6CBE8829B618380041657F /* ReceipeDetailViewModel.swift */,
+				CE6CBE8D29C5B33C0041657F /* IngredentsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -191,6 +195,16 @@
 				CE6CBE7D29B369650041657F /* RecipeService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		CE6CBE8C29C5B1B80041657F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE6CBE8629B611C10041657F /* DetailViewController.swift */,
+				CE5132B729A825FE0063DFFE /* MainViewController.swift */,
+				CE6CBE8F29C9763E0041657F /* IngredientsViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,8 +351,10 @@
 				CE5132B829A825FE0063DFFE /* MainViewController.swift in Sources */,
 				CE5132B429A825FE0063DFFE /* AppDelegate.swift in Sources */,
 				CE6CBE8329B5483E0041657F /* MainTableViewCell.swift in Sources */,
+				CE6CBE8E29C5B33C0041657F /* IngredentsViewModel.swift in Sources */,
 				CE6CBE7E29B369650041657F /* RecipeService.swift in Sources */,
 				CE6CBE7B29B363DC0041657F /* RecipeHeaderViewModel.swift in Sources */,
+				CE6CBE9029C9763E0041657F /* IngredientsViewController.swift in Sources */,
 				CE6CBE7729B35F9B0041657F /* ReceipeHeader.swift in Sources */,
 				CE5132B629A825FE0063DFFE /* SceneDelegate.swift in Sources */,
 			);
